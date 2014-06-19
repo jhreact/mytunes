@@ -12,14 +12,23 @@ var SongQueue = Songs.extend({
       console.log('Yo, we heard something ended!');
       this.processSongEnd();
     });
+    this.on('dequeue', function() {
+      this.removeFirst();
+    });
   },
   processSongEnd: function() {
-    this.remove(this.at(0));
+    this.removeFirst();
     this.play();
   },
   play: function() {
     if (this.length >= 1) {
       this.playFirst();
+    }
+  },
+  removeFirst: function() {
+    var firstSong = this.at(0);
+    if (firstSong) {
+      this.remove(firstSong);
     }
   },
   playFirst: function() {
