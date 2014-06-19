@@ -13,6 +13,7 @@ var SongQueue = Songs.extend({
   },
   processSongEnd: function() {
     this.remove(this.at(0));
+    this.playFirst();
   },
   play: function() {
     if (this.length === 1) {
