@@ -10,7 +10,11 @@ var SongQueue = Songs.extend({
     });
     this.on('ended', function() {
       console.log('Yo, we heard something ended!');
+      this.processSongEnd();
     });
+  },
+  processSongEnd: function() {
+    this.remove(this.at(0));
   },
   playFirst: function() {
     this.at(0).trigger('play');
