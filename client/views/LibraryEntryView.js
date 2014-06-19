@@ -2,7 +2,7 @@
 var LibraryEntryView = Backbone.View.extend({
 
   initialize: function() {
-    this.model.on('change:playCount', function(){
+    this.on('change:playCount', function(){
       this.render();
     }, this);
   },
@@ -13,7 +13,8 @@ var LibraryEntryView = Backbone.View.extend({
 
   events: {
     'click': function() {
-      this.model.play();
+      // this.model.play();
+      this.model.enqueue();
     }
   },
 
