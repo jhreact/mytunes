@@ -4,7 +4,9 @@ var SongQueue = Songs.extend({
   initialize: function(){
     this.on('add', function() {
       console.log('Just added a song!');
-      this.play();
+      if (this.length === 1) {
+        this.play();
+      }
     });
     this.on('ended', function() {
       console.log('Yo, we heard something ended!');
@@ -13,10 +15,10 @@ var SongQueue = Songs.extend({
   },
   processSongEnd: function() {
     this.remove(this.at(0));
-    this.playFirst();
+    this.play();
   },
   play: function() {
-    if (this.length === 1) {
+    if (this.length >= 1) {
       this.playFirst();
     }
   },
