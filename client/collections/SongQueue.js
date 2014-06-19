@@ -34,7 +34,7 @@ var SongQueue = Songs.extend({
   playFirst: function() {
     var firstSong = this.at(0);
     if (firstSong) {
-      firstSong.trigger('play');
+      firstSong.play();
     }
   }
 });
